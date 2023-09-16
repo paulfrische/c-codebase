@@ -30,7 +30,7 @@ String str_literal(Arena *arena, const char *s) {
 
 // coppy string into new one
 String str_copy(Arena *arena, String s) {
-    char* str = (char*)alloc_arena(arena, s.len);
+    char *str = (char *)alloc_arena(arena, s.len);
     strcpy(str, s.str);
     String s2;
     s2.str = str;
@@ -40,7 +40,20 @@ String str_copy(Arena *arena, String s) {
 }
 
 // compare two strings
-bool str_eq(Arena *arena, String a, String b) {}
+bool str_eq(String a, String b) {
+    if (a.len != b.len) {
+        return false;
+    }
+
+    // cant use strcmp because custom strings don't have to have a \0
+    for (u64 i = 0; i < a.len; i++) {
+        if (a.str[i] != b.str[i]) {
+            return false;
+        }
+    }
+
+    return true;
+}
 
 // test if a is contained in b
 bool str_in(Arena *arena, String a, String b) {}

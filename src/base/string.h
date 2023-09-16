@@ -27,7 +27,7 @@ String str_literal(Arena *arena, const char *s);
 String str_copy(Arena *arena, String s);
 
 // compare two strings
-bool str_eq(Arena *arena, String a, String b);
+bool str_eq(String a, String b);
 
 // test if a is contained in b
 bool str_in(Arena *arena, String a, String b);

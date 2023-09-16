@@ -19,6 +19,12 @@ int main(void) {
     EvalPrintPtr(s2.str);
     Assert(s.str != s2.str);
 
+    // test str_eq
+    String s3 = str_literal(arena, "This string is different from the others");
+    Assert(str_eq(s, s2));
+    Assert(!str_eq(s, s3));
+
+
     printf("%s\n", s.str);
 
     free_arena(arena);
