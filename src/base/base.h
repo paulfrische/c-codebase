@@ -44,7 +44,7 @@ typedef double f64;
 #define EvalPrintInt(x) printf("%s = %d\n", #x, x)
 #define EvalPrintUInt(x) printf("%s = %u\n", #x, x)
 #define EvalPrintFloat(x) printf("%s = %f\n", #x, x)
-#define EvalPrintPtr(x) printf("%s = %p\n", #x, x)
+#define EvalPrintPtr(x) printf("%s = %p\n", #x, (void *)x)
 #define EvalPrintChar(x) printf("%s = '%c'\n", #x, x)
 #define EvalPrintString(x) printf("%s = \"%s\"\n", #x, x)
 
