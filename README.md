@@ -1,5 +1,6 @@
 # C-Codebase
 Template for new c projects.  
+Heavily inspired by [Mr. 4th Programming](https://youtu.be/8fJ4vWrkS4o?si=jz0R91ucuf2Xbeqw).
 Features:
 - [ ] Arena Memory Management
     - [x] Using malloc and free
