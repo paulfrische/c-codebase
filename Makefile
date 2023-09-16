@@ -1,7 +1,7 @@
 CC = clang
 OUT = build
 CFLAGS = -Wall -Wextra
-SRCS = $(wildcard src/*.c)
+SRCS = $(wildcard src/*.c src/**/*.c)
 
 all:
 	mkdir -p $(OUT)
