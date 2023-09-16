@@ -94,4 +94,28 @@ bool str_contains(String a, String b) {
 }
 
 // concat two strings in arena
-String str_cat(Arena *arena, String a, String b) {}
+String str_cat(Arena *arena, String a, String b) {
+    u64 len_a = a.len;
+
+    if (a.str[a.len - 1] == '\0') {
+        len_a -= 1;
+    }
+
+    u64 final_len = len_a + b.len;
+
+    char *str = (char *)alloc_arena(arena, final_len);
+
+    for (u64 i = 0; i < len_a; i++) {
+        str[i] = a.str[i];
+    }
+
+    for (u64 i = len_a; i < final_len; i++) {
+        str[i] = b.str[i - len_a];
+    }
+
+    String s;
+    s.str = str;
+    s.len = final_len;
+
+    return s;
+}

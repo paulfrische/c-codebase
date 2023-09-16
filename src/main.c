@@ -28,6 +28,11 @@ int main(void) {
     // test str_contains
     Assert(str_contains(str_literal(arena, "is"), s3));
 
+    // test str_cat
+    Assert(str_eq(str_literal(arena, "Hello World"),
+                  str_cat(arena, str_literal(arena, "Hello "),
+                          str_literal(arena, "World"))));
+
     free_arena(arena);
     return EXIT_SUCCESS;
 }
