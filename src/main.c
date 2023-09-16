@@ -7,6 +7,7 @@
 #include <string.h>
 
 int main(void) {
+    LOG("%s", "Hello World");
     Assert(Min(1, 2) == 1);
     Assert(Max(1, 2) == 2);
 

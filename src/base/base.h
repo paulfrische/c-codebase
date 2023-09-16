@@ -18,6 +18,14 @@ typedef double f64;
 #define MegaBytes(n) KiloBytes(n) * 1024
 #define GigaBytes(n) MegaBytes(n) * 1024
 
+#ifndef LOGGING
+#define LOG(s, ...)
+#else
+#define LOG(s, ...)                                                            \
+    printf("[LOG]: ");                                                     \
+    printf(s, __VA_ARGS__);
+#endif
+
 #define AssertBreak()                                                          \
     {                                                                          \
         char *c = NULL;                                                        \
