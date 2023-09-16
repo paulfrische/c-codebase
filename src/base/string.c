@@ -29,7 +29,15 @@ String str_literal(Arena *arena, const char *s) {
 }
 
 // coppy string into new one
-String str_copy(Arena *arena, String s) {}
+String str_copy(Arena *arena, String s) {
+    char* str = (char*)alloc_arena(arena, s.len);
+    strcpy(str, s.str);
+    String s2;
+    s2.str = str;
+    s2.len = s.len;
+
+    return s2;
+}
 
 // compare two strings
 bool str_eq(Arena *arena, String a, String b) {}

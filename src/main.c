@@ -14,6 +14,11 @@ int main(void) {
     String s = str_literal(arena, "Hello World");
     Assert(s.len == 12);
 
+    String s2 = str_copy(arena, s);
+    EvalPrintPtr(s.str);
+    EvalPrintPtr(s2.str);
+    Assert(s.str != s2.str);
+
     printf("%s\n", s.str);
 
     free_arena(arena);
