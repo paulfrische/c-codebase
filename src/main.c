@@ -15,8 +15,6 @@ int main(void) {
     Assert(s.len == 12);
 
     String s2 = str_copy(arena, s);
-    EvalPrintPtr(s.str);
-    EvalPrintPtr(s2.str);
     Assert(s.str != s2.str);
 
     // test str_eq
@@ -24,8 +22,11 @@ int main(void) {
     Assert(str_eq(s, s2));
     Assert(!str_eq(s, s3));
 
+    // test starts with
+    Assert(str_starts_with(s3, str_literal(arena, "This")));
 
-    printf("%s\n", s.str);
+    // test str_contains
+    Assert(str_contains(str_literal(arena, "is"), s3));
 
     free_arena(arena);
     return EXIT_SUCCESS;

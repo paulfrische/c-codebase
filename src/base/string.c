@@ -1,6 +1,7 @@
 #include "string.h"
 #include "base.h"
 #include "memory.h"
+#include <stdio.h>
 #include <string.h>
 
 // allocate string in arena
@@ -54,9 +55,43 @@ bool str_eq(String a, String b) {
 
     return true;
 }
+// test if a starts with b
+bool str_starts_with(String a, String b) {
+    if (a.len < b.len) {
+        return false;
+    }
+
+    for (u64 i = 0; i < b.len; i++) {
+        // skip '\0' for ease of use
+        if (b.str[i] == '\0') {
+            continue;
+        }
+
+        if (a.str[i] != b.str[i]) {
+            return false;
+        }
+    }
+
+    return true;
+}
 
 // test if a is contained in b
-bool str_in(Arena *arena, String a, String b) {}
+bool str_contains(String a, String b) {
+    if (a.len > b.len) {
+        return false;
+    }
+    for (u64 i = 0; i < a.len; i++) {
+        String s;
+        s.str = b.str + i;
+        s.len = b.len - i;
+
+        if (str_starts_with(s, a)) {
+            return true;
+        }
+    }
+
+    return false;
+}
 
 // concat two strings in arena
 String str_cat(Arena *arena, String a, String b) {}
