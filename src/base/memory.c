@@ -3,8 +3,8 @@
 #include <stdlib.h>
 
 // create arenas on the heap
-Arena *make_arena() { return make_arena_sized(ARENA_DEFAULT_SIZE); }
-Arena *make_arena_sized(u64 size) {
+inline Arena *make_arena() { return make_arena_sized(ARENA_DEFAULT_SIZE); }
+inline Arena *make_arena_sized(u64 size) {
     Arena *a = (Arena *)malloc(sizeof(Arena));
     a->mem = malloc(size);
     a->pos = 0;
@@ -12,7 +12,7 @@ Arena *make_arena_sized(u64 size) {
 }
 
 // allocate memory in arena
-void *arena_alloc(Arena *a, u64 size) {
+inline void *arena_alloc(Arena *a, u64 size) {
     void *memory = a->mem + a->pos;
     a->pos += size;
     LOG("allocation in arena. Using %lu bytes\n", a->pos);
@@ -20,7 +20,7 @@ void *arena_alloc(Arena *a, u64 size) {
 }
 
 // free entire arena
-void arena_free(Arena *a) {
+inline void arena_free(Arena *a) {
     LOG("free arena at %p", a);
     free(a->mem);
     free(a);
