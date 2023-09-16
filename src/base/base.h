@@ -13,6 +13,11 @@ typedef uint64_t u64;
 typedef float f32;
 typedef double f64;
 
+#define Bytes(n) n
+#define KiloBytes(n) Bytes(n) * 1024
+#define MegaBytes(n) KiloBytes(n) * 1024
+#define GigaBytes(n) MegaBytes(n) * 1024
+
 #define AssertBreak()                                                          \
     {                                                                          \
         char *c = NULL;                                                        \
