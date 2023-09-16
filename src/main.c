@@ -7,18 +7,15 @@
 #include <string.h>
 
 int main(void) {
-    char str[] = "Hello World";
-    Assert(ArrayCount(str) == 12);
     Assert(Min(1, 2) == 1);
     Assert(Max(1, 2) == 2);
 
-    Arena* a = make_arena();
-    String s = alloc_string(a, 12);
-    strcpy(s.str, "Hello World");
+    Arena *arena = make_arena();
+    String s = str_literal(arena, "Hello World");
+    Assert(s.len == 12);
 
     printf("%s\n", s.str);
 
-    free_arena(a);
-
+    free_arena(arena);
     return EXIT_SUCCESS;
 }
