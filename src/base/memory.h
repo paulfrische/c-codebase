@@ -10,13 +10,13 @@ typedef struct {
     u64 pos;
 } Arena;
 
-inline Arena *make_arena();
-inline Arena *make_arena_sized(u64 size);
+Arena *make_arena();
+Arena *make_arena_sized(u64 size);
 
 // allocate memory in arena
-inline void *arena_alloc(Arena *a, u64 size);
+void *arena_alloc(Arena *a, u64 size);
 
 // free entire arena
-inline void arena_free(Arena *a);
+void arena_free(Arena *a);
 
 #endif // MEMORY
