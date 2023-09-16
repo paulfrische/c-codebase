@@ -21,9 +21,10 @@ typedef double f64;
 #ifndef LOGGING
 #define LOG(s, ...)
 #else
+#include <stdio.h>
 #define LOG(s, ...)                                                            \
-    printf("[LOG]: ");                                                     \
-    printf(s, __VA_ARGS__);
+    printf("[LOG]: ");                                                         \
+    printf(s, __VA_ARGS__)
 #endif
 
 #define AssertBreak()                                                          \
