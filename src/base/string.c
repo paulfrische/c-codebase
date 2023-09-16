@@ -40,6 +40,25 @@ String str_copy(Arena *arena, String s) {
     return s2;
 }
 
+// finds b in a
+// returns -1 if b can't be found
+u64 str_find(String a, String b) {
+    if (a.len < b.len) {
+        return -1;
+    }
+
+    for (u64 i = 0; i < a.len - b.len; i++) {
+        String s;
+        s.str = a.str + i;
+        s.len = a.len - i;
+        if (str_starts_with(s, b)) {
+            return i;
+        }
+    }
+
+    return -1;
+}
+
 // compare two strings
 bool str_eq(String a, String b) {
     if (a.len != b.len) {
@@ -75,21 +94,11 @@ bool str_starts_with(String a, String b) {
     return true;
 }
 
-// test if a is contained in b
+// test if b is contained in a
 bool str_contains(String a, String b) {
-    if (a.len > b.len) {
-        return false;
+    if (str_find(a, b) != (u64)(-1)) {
+        return true;
     }
-    for (u64 i = 0; i < a.len; i++) {
-        String s;
-        s.str = b.str + i;
-        s.len = b.len - i;
-
-        if (str_starts_with(s, a)) {
-            return true;
-        }
-    }
-
     return false;
 }
 

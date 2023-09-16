@@ -26,8 +26,11 @@ int main(void) {
     // test starts with
     Assert(str_starts_with(s3, str_literal(arena, "This")));
 
+    // test str_find
+    Assert(str_find(s3, str_literal(arena, " is")) == 11);
+
     // test str_contains
-    Assert(str_contains(str_literal(arena, "is"), s3));
+    Assert(str_contains(s3, str_literal(arena, "is")));
 
     // test str_cat
     Assert(str_eq(str_literal(arena, "Hello World"),
