@@ -1,11 +1,11 @@
 CC = clang
 OUT = build
 CFLAGS = -Wall -Wextra
-SRC = src/*.c
+SRCS = $(wildcard src/*.c)
 
 all:
 	mkdir -p $(OUT)
-	$(CC) $(CFLAGS) $(SRC) -o $(OUT)/main
+	$(CC) $(CFLAGS) $(SRCS) -o $(OUT)/main
 
 test: all
 	./build/main
