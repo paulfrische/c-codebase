@@ -33,6 +33,6 @@ int main(void) {
                   str_cat(arena, str_literal(arena, "Hello "),
                           str_literal(arena, "World"))));
 
-    free_arena(arena);
+    arena_free(arena);
     return EXIT_SUCCESS;
 }

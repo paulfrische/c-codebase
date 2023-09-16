@@ -6,7 +6,7 @@
 
 // allocate string in arena
 String str_alloc(Arena *arena, u64 len) {
-    char *str = (char *)alloc_arena(arena, len);
+    char *str = (char *)arena_alloc(arena, len);
 
     String s;
     s.str = str;
@@ -19,7 +19,7 @@ String str_alloc(Arena *arena, u64 len) {
 String str_literal(Arena *arena, const char *s) {
     // add one for \0
     u64 len = strlen(s) + 1;
-    char *str = (char *)alloc_arena(arena, len);
+    char *str = (char *)arena_alloc(arena, len);
 
     String string;
     strcpy(str, s);
@@ -31,7 +31,7 @@ String str_literal(Arena *arena, const char *s) {
 
 // coppy string into new one
 String str_copy(Arena *arena, String s) {
-    char *str = (char *)alloc_arena(arena, s.len);
+    char *str = (char *)arena_alloc(arena, s.len);
     strcpy(str, s.str);
     String s2;
     s2.str = str;
@@ -103,7 +103,7 @@ String str_cat(Arena *arena, String a, String b) {
 
     u64 final_len = len_a + b.len;
 
-    char *str = (char *)alloc_arena(arena, final_len);
+    char *str = (char *)arena_alloc(arena, final_len);
 
     for (u64 i = 0; i < len_a; i++) {
         str[i] = a.str[i];

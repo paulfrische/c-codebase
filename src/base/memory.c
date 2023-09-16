@@ -11,14 +11,14 @@ Arena *make_arena_sized(u64 size) {
 }
 
 // allocate memory in arena
-void *alloc_arena(Arena *a, u64 size) {
+void *arena_alloc(Arena *a, u64 size) {
     void *memory = a->mem + a->pos;
     a->pos += size;
     return memory;
 }
 
 // free entire arena
-void free_arena(Arena *a) {
+void arena_free(Arena *a) {
     free(a->mem);
     free(a);
 }
