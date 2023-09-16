@@ -1,5 +1,5 @@
-#ifndef STRING
-#define STRING
+#ifndef BASE_STRING_H
+#define BASE_STRING_H
 
 #include <stdbool.h>
 
@@ -41,4 +41,4 @@ bool str_starts_with(String a, String b);
 // test if a is contained in b
 bool str_contains(String a, String b);
 
-#endif // !STRING
+#endif // !BASE_STRING_H

@@ -1,5 +1,5 @@
-#ifndef BASE
-#define BASE
+#ifndef BASE_LAYER_H
+#define BASE_LAYER_H
 
 // basic types
 #include <stdint.h>
@@ -58,4 +58,4 @@ typedef double f64;
 #define EvalPrintChar(x) printf("%s = '%c'\n", #x, x)
 #define EvalPrintString(x) printf("%s = \"%s\"\n", #x, x)
 
-#endif // !BASE
+#endif // !BASE_LAYER_H
