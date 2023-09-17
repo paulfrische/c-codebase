@@ -23,28 +23,28 @@ typedef double f64;
 #define LOG(s, ...)
 #else
 #include <stdio.h>
-#define LOG(s, ...)                                                            \
-    printf("[LOG]: ");                                                         \
+#define LOG(s, ...)    \
+    printf("[LOG]: "); \
     printf(s, __VA_ARGS__)
 #endif
 
-#define AssertBreak()                                                          \
-    {                                                                          \
-        char *c = NULL;                                                        \
-        *c = 0;                                                                \
+#define AssertBreak()   \
+    {                   \
+        char* c = NULL; \
+        *c = 0;         \
     }
 
-#define Assert(e)                                                              \
-    if (!(e)) {                                                                \
-        printf("%s failed\n", #e);                                             \
-        AssertBreak();                                                         \
+#define Assert(e)                  \
+    if (!(e)) {                    \
+        printf("%s failed\n", #e); \
+        AssertBreak();             \
     }
 
 #define ArrayCount(a) (sizeof(a) / sizeof(*(a)))
 
-#define IntFromPtr(p) (unsigned long long)((char *)p - (char *)0)
+#define IntFromPtr(p) (unsigned long long)((char*)p - (char*)0)
 
-#define Member(T, m) (((T *)0)->m)
+#define Member(T, m) (((T*)0)->m)
 #define OffsetOfMember(T, m) IntFromPtr(&Member(T, m))
 
 #define Min(a, b) (((a) < (b)) ? (a) : (b))
@@ -54,7 +54,7 @@ typedef double f64;
 #define EvalPrintInt(x) printf("%s = %d\n", #x, x)
 #define EvalPrintUInt(x) printf("%s = %u\n", #x, x)
 #define EvalPrintFloat(x) printf("%s = %f\n", #x, x)
-#define EvalPrintPtr(x) printf("%s = %p\n", #x, (void *)x)
+#define EvalPrintPtr(x) printf("%s = %p\n", #x, (void*)x)
 #define EvalPrintChar(x) printf("%s = '%c'\n", #x, x)
 #define EvalPrintString(x) printf("%s = \"%s\"\n", #x, x)
 

@@ -6,12 +6,13 @@
 #include <stdlib.h>
 #include <string.h>
 
-int main(void) {
+int main(void)
+{
     LOG("%s", "Hello World\n");
     Assert(Min(1, 2) == 1);
     Assert(Max(1, 2) == 2);
 
-    Arena *arena = arena_init();
+    Arena* arena = arena_init();
     String s = str_from_c_str(arena, "Hello World");
     Assert(s.len == 12);
 
@@ -34,13 +35,13 @@ int main(void) {
 
     // test str_cat
     Assert(str_eq(str_from_c_str(arena, "Hello World"),
-                  str_cat(arena, str_from_c_str(arena, "Hello "),
-                          str_from_c_str(arena, "World"))));
+        str_cat(arena, str_from_c_str(arena, "Hello "),
+            str_from_c_str(arena, "World"))));
 
     // test str_default_c_str
     String s4 = str_from_c_str(arena, "Chello");
     s4.len -= 1; // "remove" the null terminator
-    char *s5 = str_to_c_str(arena, s4);
+    char* s5 = str_to_c_str(arena, s4);
     printf("%s\n", s5);
 
     arena_free(arena);
