@@ -13,7 +13,7 @@ typedef struct {
 #define arena_init() arena_init_sized(ARENA_DEFAULT_SIZE)
 Arena *arena_init_sized(u64 size);
 
-// allocate BASE_MEMORY_H in arena
+// allocate memory in arena
 void *arena_alloc(Arena *a, u64 size);
 
 // free entire arena
