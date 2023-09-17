@@ -21,7 +21,7 @@ typedef struct {
 String str_alloc(Arena *arena, u64 len);
 
 // generate string from literal
-String str_literal(Arena *arena, const char *s);
+String str_from_c_str(Arena *arena, const char *s);
 
 // coppy string into new one
 String str_copy(Arena *arena, String s);
@@ -31,7 +31,7 @@ String str_cat(Arena *arena, String a, String b);
 
 // to null terminated
 // this function will copy the string
-char *str_default_c_str(Arena *arena, String s);
+char *str_to_c_str(Arena *arena, String s);
 
 // find string b in string a
 u64 str_find(String a, String b);

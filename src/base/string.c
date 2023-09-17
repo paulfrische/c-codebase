@@ -16,7 +16,7 @@ String str_alloc(Arena *arena, u64 len) {
 }
 
 // generate string from literal (with \0)
-String str_literal(Arena *arena, const char *s) {
+String str_from_c_str(Arena *arena, const char *s) {
     // add one for \0
     u64 len = strlen(s) + 1;
     char *str = (char *)arena_alloc(arena, len);
@@ -131,13 +131,13 @@ String str_cat(Arena *arena, String a, String b) {
 
 // to null terminated
 // this function will copy the string
-char *str_default_c_str(Arena *arena, String s) {
+char *str_to_c_str(Arena *arena, String s) {
     Arena *scratch = make_arena();
     // if s.str ends with \0 it can be copied
     if (s.str[s.len - 1] == '\0') {
         return str_copy(arena, s).str;
     }
 
-    String s2 = str_cat(arena, s, str_literal(scratch, "\0"));
+    String s2 = str_cat(arena, s, str_from_c_str(scratch, "\0"));
     return s2.str;
 }
