@@ -148,5 +148,6 @@ char* str_to_c_str(Arena* arena, String s)
     }
 
     String s2 = str_cat(arena, s, str_from_c_str(scratch, "\0"));
+    arena_free(scratch);
     return s2.str;
 }
