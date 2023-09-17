@@ -29,6 +29,10 @@ String str_copy(Arena *arena, String s);
 // concat two strings in arena
 String str_cat(Arena *arena, String a, String b);
 
+// to null terminated
+// this function will copy the string
+char *str_default_c_str(Arena *arena, String s);
+
 // find string b in string a
 u64 str_find(String a, String b);
 

@@ -128,3 +128,16 @@ String str_cat(Arena *arena, String a, String b) {
 
     return s;
 }
+
+// to null terminated
+// this function will copy the string
+char *str_default_c_str(Arena *arena, String s) {
+    Arena *scratch = make_arena();
+    // if s.str ends with \0 it can be copied
+    if (s.str[s.len - 1] == '\0') {
+        return str_copy(arena, s).str;
+    }
+
+    String s2 = str_cat(arena, s, str_literal(scratch, "\0"));
+    return s2.str;
+}

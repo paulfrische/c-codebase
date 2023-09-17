@@ -37,6 +37,12 @@ int main(void) {
                   str_cat(arena, str_literal(arena, "Hello "),
                           str_literal(arena, "World"))));
 
+    // test str_default_c_str
+    String s4 = str_literal(arena, "Chello");
+    s4.len -= 1; // "remove" the null terminator
+    char *s5 = str_default_c_str(arena, s4);
+    printf("%s\n", s5);
+
     arena_free(arena);
     return EXIT_SUCCESS;
 }
