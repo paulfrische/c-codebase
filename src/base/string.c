@@ -132,7 +132,7 @@ String str_cat(Arena *arena, String a, String b) {
 // to null terminated
 // this function will copy the string
 char *str_to_c_str(Arena *arena, String s) {
-    Arena *scratch = make_arena();
+    Arena *scratch = arena_init();
     // if s.str ends with \0 it can be copied
     if (s.str[s.len - 1] == '\0') {
         return str_copy(arena, s).str;

@@ -11,7 +11,7 @@ int main(void) {
     Assert(Min(1, 2) == 1);
     Assert(Max(1, 2) == 2);
 
-    Arena *arena = make_arena();
+    Arena *arena = arena_init();
     String s = str_from_c_str(arena, "Hello World");
     Assert(s.len == 12);
 

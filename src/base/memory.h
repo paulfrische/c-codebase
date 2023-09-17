@@ -10,8 +10,8 @@ typedef struct {
     u64 pos;
 } Arena;
 
-Arena *make_arena();
-Arena *make_arena_sized(u64 size);
+#define arena_init() arena_init_sized(ARENA_DEFAULT_SIZE)
+Arena *arena_init_sized(u64 size);
 
 // allocate BASE_MEMORY_H in arena
 void *arena_alloc(Arena *a, u64 size);
