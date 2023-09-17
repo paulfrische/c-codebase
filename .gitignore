@@ -1,6 +1,9 @@
 # build dir
 build/
 
+# valgrind
+vgcore.*
+
 # Prerequisites
 *.d
 
