@@ -4,6 +4,9 @@ build/
 # valgrind
 vgcore.*
 
+# files generated when testing
+tmp.txt
+
 # Prerequisites
 *.d
 

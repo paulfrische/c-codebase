@@ -49,6 +49,12 @@ int main(void)
     String s6 = filesystem_read_file(arena, str_from_c_str(arena, "./src/main.c"));
     printf("%s\n", str_to_c_str(arena, s6));
 
+    // test filesystem_write_file
+    filesystem_write_file(str_from_c_str(arena, "tmp.txt"), str_from_c_str(arena, "Hello World!"));
+
+    // test filesystem_append_file
+    filesystem_append_file(str_from_c_str(arena, "tmp.txt"), str_from_c_str(arena, "\nSome more text"));
+
     arena_free(arena);
     return EXIT_SUCCESS;
 }

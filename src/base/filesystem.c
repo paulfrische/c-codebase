@@ -47,7 +47,25 @@ String filesystem_read_file(Arena* arena, String path)
 }
 
 // write content to file
-void filesystem_write_file(String path, String content) { }
+void filesystem_write_file(String path, String content)
+{
+    Arena* scratch = arena_init();
+    FILE* file = fopen(str_to_c_str(scratch, path), "w");
+
+    fprintf(file, "%s", str_to_c_str(scratch, content));
+
+    fclose(file);
+    arena_free(scratch);
+}
 
 // append content to file
-void filesystem_append_file(String path, String content) { }
+void filesystem_append_file(String path, String content)
+{
+    Arena* scratch = arena_init();
+    FILE* file = fopen(str_to_c_str(scratch, path), "a");
+
+    fprintf(file, "%s", str_to_c_str(scratch, content));
+
+    fclose(file);
+    arena_free(scratch);
+}
