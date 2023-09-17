@@ -8,7 +8,7 @@
 // read entire file
 String filesystem_read_file(Arena* arena, String path)
 {
-    Arena* scratch = arena_init();
+    Arena* scratch = arena_init_sized(path.len);
     char* cpath = str_to_c_str(scratch, path);
     FILE* file = fopen(cpath, "r");
     if (file == NULL) {
@@ -49,7 +49,7 @@ String filesystem_read_file(Arena* arena, String path)
 // write content to file
 void filesystem_write_file(String path, String content)
 {
-    Arena* scratch = arena_init();
+    Arena* scratch = arena_init_sized(path.len + content.len);
     FILE* file = fopen(str_to_c_str(scratch, path), "w");
 
     fprintf(file, "%s", str_to_c_str(scratch, content));
@@ -61,7 +61,7 @@ void filesystem_write_file(String path, String content)
 // append content to file
 void filesystem_append_file(String path, String content)
 {
-    Arena* scratch = arena_init();
+    Arena* scratch = arena_init_sized(path.len + content.len);
     FILE* file = fopen(str_to_c_str(scratch, path), "a");
 
     fprintf(file, "%s", str_to_c_str(scratch, content));
