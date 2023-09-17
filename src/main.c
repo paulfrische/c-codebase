@@ -1,4 +1,5 @@
 #include "base/base.h"
+#include "base/filesystem.h"
 #include "base/memory.h"
 #include "base/string.h"
 
@@ -8,7 +9,7 @@
 
 int main(void)
 {
-    LOG("%s", "Hello World\n");
+    LOG("%s", "Hello World");
     Assert(Min(1, 2) == 1);
     Assert(Max(1, 2) == 2);
 
@@ -43,6 +44,10 @@ int main(void)
     s4.len -= 1; // "remove" the null terminator
     char* s5 = str_to_c_str(arena, s4);
     printf("%s\n", s5);
+
+    // test filesystem_read_file
+    String s6 = filesystem_read_file(arena, str_from_c_str(arena, "./src/main.c"));
+    printf("%s\n", str_to_c_str(arena, s6));
 
     arena_free(arena);
     return EXIT_SUCCESS;
