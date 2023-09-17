@@ -1,6 +1,6 @@
 CC = clang
 OUT = build
-CFLAGS = -Wall -Wextra
+CFLAGS = -Wall -Wextra -g
 SRCS = $(wildcard src/*.c src/**/*.c)
 DEFINES = -DLOGGING
 
@@ -9,6 +9,7 @@ all:
 	$(CC) $(CFLAGS) $(DEFINES) $(SRCS) -o $(OUT)/out
 
 test: all
+	echo $(shell pwd)
 	./build/out
 
 .PHONY: clean
