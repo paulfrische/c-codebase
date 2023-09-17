@@ -6,8 +6,12 @@
 Arena* arena_init_sized(u64 size)
 {
     Arena* a = (Arena*)malloc(sizeof(Arena));
+    a->id = arena_count;
     a->mem = malloc(size);
     a->pos = 0;
+
+    arena_count++;
+
     return a;
 }
 
@@ -16,14 +20,14 @@ void* arena_alloc(Arena* a, u64 size)
 {
     void* memory = a->mem + a->pos;
     a->pos += size;
-    LOG("allocation in arena. Using %lu bytes\n", a->pos);
+    LOG("allocation in arena %lu. Using %lu bytes\n", a->id, a->pos);
     return memory;
 }
 
 // free entire arena
 void arena_free(Arena* a)
 {
-    LOG("free arena at %p", a);
+    LOG("free arena %lu at %p", a->id, a);
     free(a->mem);
     free(a);
 }

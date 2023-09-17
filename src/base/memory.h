@@ -5,7 +5,10 @@
 
 #define ARENA_DEFAULT_SIZE KiloBytes(64)
 
+static u64 arena_count = 0;
+
 typedef struct {
+    u64 id;
     void* mem;
     u64 pos;
 } Arena;
