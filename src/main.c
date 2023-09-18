@@ -36,8 +36,7 @@ int main(void)
 
     // test str_cat
     Assert(str_eq(str_from_c_str(arena, "Hello World"),
-        str_cat(arena, str_from_c_str(arena, "Hello "),
-            str_from_c_str(arena, "World"))));
+        str_cat(arena, str_from_c_str(arena, "Hello "), str_from_c_str(arena, "World"))));
 
     // test str_default_c_str
     String s4 = str_from_c_str(arena, "Chello");

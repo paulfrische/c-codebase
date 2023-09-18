@@ -15,35 +15,18 @@ String filesystem_read_file(Arena* arena, String path)
         LOG("file %s doesn't exits/could'd be opened", cpath);
     }
 
-    u64 len = 1;
-    char* content = (char*)malloc(len * sizeof(char));
-    if (content == NULL) {
-        LOG("couldn't malloc string for reading file", "");
-    }
+    // get length of file
+    fseek(file, 0, SEEK_END);
+    u64 length = ftell(file);
+    fseek(file, 0, SEEK_SET);
 
-    char c;
-    while ((c = fgetc(file))) {
-        if (c == EOF) {
-            break;
-        }
-        content[len - 1] = c;
-        len++;
-        content = realloc(content, len);
-    }
+    String content = str_alloc(arena, length);
+    fread(content.str, sizeof(char), length, file);
 
-    /* LOG("run?", ""); */
-    String temp = {
-        .str = content,
-        .len = len,
-    };
-
-    String result = str_copy(arena, temp);
-
-    free(content);
     fclose(file);
     arena_free(scratch);
 
-    return result;
+    return content;
 }
 
 // write content to file
