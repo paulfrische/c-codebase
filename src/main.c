@@ -1,5 +1,6 @@
 #include "base/base.h"
 #include "base/filesystem.h"
+#include "base/logging.h"
 #include "base/memory.h"
 #include "base/string.h"
 
@@ -9,7 +10,12 @@
 
 int main(void)
 {
-    LOG("%s", "Hello World");
+    DEBUG("Hello World!");
+    INFO("Hello World!");
+    WARN("Hello World!");
+    ERROR("Hello World!");
+    CRITICAL("Hello World!");
+
     Assert(Min(1, 2) == 1);
     Assert(Max(1, 2) == 2);
 

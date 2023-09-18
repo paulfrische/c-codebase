@@ -1,5 +1,6 @@
 #include "filesystem.h"
 #include "base.h"
+#include "logging.h"
 #include "memory.h"
 #include "string.h"
 #include <stdio.h>
@@ -12,7 +13,7 @@ String filesystem_read_file(Arena* arena, String path)
     char* cpath = str_to_c_str(scratch, path);
     FILE* file = fopen(cpath, "r");
     if (file == NULL) {
-        LOG("file %s doesn't exits/could'd be opened", cpath);
+        ERROR("file %s doesn't exits/could'd be opened", cpath);
     }
 
     // get length of file

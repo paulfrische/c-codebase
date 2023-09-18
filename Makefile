@@ -2,7 +2,7 @@ CC = clang
 OUT = build
 CFLAGS = -Wall -Wextra -g
 SRCS = $(wildcard src/*.c src/**/*.c)
-DEFINES = -DLOGGING
+DEFINES = -DLEVEL=5
 
 all:
 	mkdir -p $(OUT)

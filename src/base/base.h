@@ -19,26 +19,16 @@ typedef double f64;
 #define MegaBytes(n) KiloBytes(n) * 1024
 #define GigaBytes(n) MegaBytes(n) * 1024
 
-#ifndef LOGGING
-#define LOG(s, ...)
-#else
-#include <stdio.h>
-#define LOG(s, ...)         \
-    printf("[LOG]: ");      \
-    printf(s, __VA_ARGS__); \
-    printf("\n")
-#endif
-
-#define AssertBreak()   \
-    {                   \
-        char* c = NULL; \
-        *c = 0;         \
+#define AssertBreak()                                                                                                  \
+    {                                                                                                                  \
+        char* c = NULL;                                                                                                \
+        *c = 0;                                                                                                        \
     }
 
-#define Assert(e)                  \
-    if (!(e)) {                    \
-        printf("%s failed\n", #e); \
-        AssertBreak();             \
+#define Assert(e)                                                                                                      \
+    if (!(e)) {                                                                                                        \
+        printf("%s failed\n", #e);                                                                                     \
+        AssertBreak();                                                                                                 \
     }
 
 #define ArrayCount(a) (sizeof(a) / sizeof(*(a)))
