@@ -3,10 +3,16 @@ OUT = build
 CFLAGS = -Wall -Wextra -g
 SRCS = $(wildcard src/*.c src/**/*.c)
 DEFINES = -DLEVEL=5
+OBJ = $(SRC:.c=.o)
 
-all:
+OBJ = $(SRCS:.c=.o)
+
+%.o: %.c
+	$(CC) $(CFLAGS) $(DEFINES) -c $^ -o $@
+
+all: $(OBJ)
 	mkdir -p $(OUT)
-	$(CC) $(CFLAGS) $(DEFINES) $(SRCS) -o $(OUT)/out
+	$(CC) $^ -o $(OUT)/out
 
 test: all
 	echo $(shell pwd)
