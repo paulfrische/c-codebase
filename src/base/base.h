@@ -19,6 +19,8 @@ typedef double f64;
 #define MegaBytes(n) KiloBytes(n) * 1024
 #define GigaBytes(n) MegaBytes(n) * 1024
 
+#define Stringify(s) #s
+
 #define AssertBreak()                                                                                                  \
     {                                                                                                                  \
         char* c = NULL;                                                                                                \

@@ -13,7 +13,7 @@ typedef struct {
     u64 pos;
 } Arena;
 
-#define arena_init() arena_init_sized(ARENA_DEFAULT_SIZE)
+#define ArenaInit() arena_init_sized(ARENA_DEFAULT_SIZE)
 Arena* arena_init_sized(u64 size);
 
 // allocate memory in arena
