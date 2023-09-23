@@ -8,7 +8,7 @@
 //////////////////////
 
 void* c_alloc(u64 size);
-void c_free(void* memory, u64 size);
+void c_free(void* memory);
 
 ////////////
 // ARENAS //

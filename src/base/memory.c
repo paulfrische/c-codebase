@@ -8,8 +8,16 @@
 // Custom Allocator //
 //////////////////////
 
-void* c_alloc(u64 size) { return mmap(NULL, size, PROT_READ | PROT_WRITE, MAP_PRIVATE | MAP_ANONYMOUS, 0, 0); }
-void c_free(void* memory, u64 size) { munmap(memory, size); }
+void* c_alloc(u64 size)
+{
+    u64* mem = mmap(NULL, size + sizeof(u64), PROT_READ | PROT_WRITE, MAP_PRIVATE | MAP_ANONYMOUS, 0, 0);
+    mem[0] = size;
+    return (void*)(mem + 1);
+}
+void c_free(void* memory) {
+    u64 size = ((u64*)memory)[-1];
+    munmap(memory, size);
+}
 
 ////////////
 // ARENAS //
@@ -41,6 +49,6 @@ void* arena_alloc(Arena* a, u64 size)
 void arena_free(Arena* a)
 {
     DEBUG("free arena [%lu] at %p", a->id, a);
-    c_free(a->mem, a->size);
-    c_free(a, sizeof(Arena));
+    c_free(a->mem);
+    c_free(a);
 }
